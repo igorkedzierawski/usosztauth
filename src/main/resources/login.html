@@ -1,0 +1,39 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Autorize via USOS</title>
+    <style>
+        body {
+            background-color: #f7f7f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+        #container {
+            max-width: 800px;
+            text-align: center;
+        }
+        .button {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 7px 14px;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Uwierzytelnienie w USOS do autoryzacji urządzeń ZeroTier</h1>
+        <h3>Zaloguj się przez USOS, aby móc autoryzować swoje urządzenia do sieci</h3>
+        <span id="statusbox" style="font-weight: bold;"></span>
+        <br>
+        <br>
+        <a id="redirect_anchor" class="button">Zaloguj się przez USOS</a>
+    </div>
+    <script src="/util.js"></script>
+    <script src="/login.js"></script>
+</body>
+</html>

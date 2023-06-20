@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'zet.kedzieri.usosztauth'
+version = '1.6'
+
+repositories {
+    mavenCentral()
+}
+dependencies {
+    implementation 'com.google.oauth-client:google-oauth-client:1.33.3'
+    implementation 'com.google.code.gson:gson:2.10.1'
+}
+
+mainClassName = "zet.kedzieri.usosztauth.Main"
+
+jar {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    manifest {
+        attributes "Main-Class": "$mainClassName"
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+gradle.taskGraph.whenReady { taskGraph ->
+    def task = taskGraph.allTasks.find { it.name.endsWith(".main()") }
+    if (task instanceof JavaExec) {
+        task.executable = task.javaLauncher.get().executablePath.asFile.absolutePath
+    }
+}
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17

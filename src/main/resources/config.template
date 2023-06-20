@@ -1,0 +1,9 @@
+# Port na którym ma działać ten serwis, np '3434'
+PORT=
+
+# 16-cyfrowa liczba heksadecymalna oznaczająca sieć ZeroTier w jakiej ten
+# serwis ma pracować, np '3ae74869af425b9d'
+ZERO_TIER_NETWORK=
+
+# Maksymalna liczba urządzeń jaką jeden użytkownik może autoryzować do sieci
+MAX_DEVICES_PER_USER=

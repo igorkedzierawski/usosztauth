@@ -1,0 +1,12 @@
+post_install() {
+    systemctl restart systemd-sysusers.service
+    chown -R usosztauth:usosztauth /usr/share/java/usosztauth/
+    chown -R usosztauth:usosztauth /usr/share/usosztauth/
+    chown usosztauth:usosztauth /usr/bin/usosztauth-service-runner
+    systemctl daemon-reload
+}
+post_remove() {
+    userdel usosztauth
+    systemctl stop usosztauth.service
+    systemctl daemon-reload
+}

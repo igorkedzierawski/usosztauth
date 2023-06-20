@@ -1,0 +1,121 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Autorize via USOS</title>
+    <style>
+        body {
+            background-color: #f7f7f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+        #container {
+            max-width: 800px;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        #logout_button {
+            padding: 10px 20px;
+            background-color: #ff4747;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #statusbox {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        input[type="text"] {
+            padding: 5px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            width: 300px;
+        }
+        #auth_button, #refresh_devices_button {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 7px 14px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        /* Media Queries for Responsive Layout */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 20px;
+            }
+            h2 {
+                font-size: 18px;
+            }
+            #logout_button, #auth_button, #refresh_devices_button {
+                font-size: 14px;
+            }
+            input[type="text"] {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <h1>
+        Zalogowano jako:
+        <span id="imie">??</span> <span id="nazwisko">??</span>
+    </h1>
+    <h1>
+        ID sieci ZeroTier: <span id="netid">??</span>
+    </h1>
+    <br>
+    <button id="logout_button">Wyloguj</button>
+    <br>
+    <span id="statusbox"></span>
+    <br>
+    <div>
+        <h2>Autoryzuj urządzenie do sieci ZeroTier:</h2>
+        <span>ID urządzenia:</span>
+        <br>
+        <input type="text" id="zt_dev_id_input">
+        <br>
+        <button id="auth_button">Autoryzuj</button>
+    </div>
+    <div>
+        <h2>Twoje autoryzowane urządzenia:</h2>
+        <button id="refresh_devices_button">Odśwież listę</button>
+        <table>
+            <thead>
+            <tr>
+                <th>ID Urządzenia</th>
+                <th>Nazwa urządzenia</th>
+                <th>Deautoryzuj</th>
+            </tr>
+            </thead>
+            <tbody id="zt_dev_list"></tbody>
+        </table>
+    </div>
+</div>
+<script src="/util.js"></script>
+<script src="/authorize.js"></script>
+</body>
+</html>

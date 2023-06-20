@@ -1,0 +1,14 @@
+[Unit]
+Description=UsosZtAuth Service
+After=network-online.target network.target
+Wants=network-online.target
+
+[Service]
+User=usosztauth
+WorkingDirectory=/usr/share/usosztauth
+ExecStart=/usr/bin/usosztauth-service-runner
+Restart=always
+KillMode=control-group
+
+[Install]
+WantedBy=multi-user.target

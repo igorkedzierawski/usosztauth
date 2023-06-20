@@ -1,0 +1,7 @@
+.gradle/*
+.idea/*
+build/*
+config
+authorized_users
+usos_credentials
+zerotier_token

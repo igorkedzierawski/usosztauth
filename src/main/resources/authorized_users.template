@@ -1,0 +1,33 @@
+# Lista użytkowników, którzy są uprawnieni do korzystania z tego serwisu
+#
+# Każdy użytkownik USOS ma możliwość uwierzytelnienia się do tego serwisu
+# dlatego konieczna jest dodatkowa forma autoryzacji. W tym pliku znajduje
+# się lista użytkowników, którzy będą mogli korzystać z tego serwisu.
+#
+# Użytkownicy są definiowani w tym pliku w następującym formacie:
+#   '<USOS ID> <ISOD ID>'
+# Gdzie:
+#   <USOS ID> -- ID użytkownika w serwisie USOS
+#       Jest to to samo ID, jakie jest wykorzystywane w uczelniachych
+#       adresach mailowych, z wyjątkiem tego że nie ma ono poprzedzających
+#       zer. Czyli np. adres mailowy '01134343@pw.edu.pl' należy do
+#       użytkownika o id '1134343'.
+#   <ISOD ID> -- ID użytkownika w serwisie ISOD
+#       ID to jest wykorzystywane do nazywania urządzeń w sieci ZeroTier.
+#       Sprawia to że nazwy urządzeń nie są numeryczne dzięki czemu można
+#       je wykorzystać w serwisie DNS.
+#
+# Przykład definicji użytkownika:
+#   Student Jan Kowalski ma adres mailowy '01134343@pw.edu.pl', co oznacza
+#   że jego id to '1134343'. W ISODzie jego login to 'kowalskj'. Jego
+#   definicja będzie wyglądać następująco:
+#       '1134343 kowalskj'
+#
+# Warto wspomnieć, że ID USOS może być mapowane na dowolną inną nazwę, która
+# jednoznacznie identyfikowałaby użytkownika, więc możliwe jest
+# zrobienie prostszego mapowania, np.:
+#       '1134343 user-1134343'
+#
+# Ważne jest, aby mapowanie ID USOS na nazwy pozostało stałe, dopóki ci
+# sami użytkownicy wciąż korzystają z serwisu. W przeciwnym razie stracą
+# oni dostęp do zarządzania wcześniej zautoryzowanymi urządzeniami.

@@ -1,0 +1,36 @@
+#!/bin/sh
+# Skrypt startujący serwis UsosZtAuth odpowiednią wersją javy
+# Igor Kędzierawski 2023
+
+#Plik .jar z serwisem
+service_jar="/usr/share/java/usosztauth/UsosZtAuth.jar"
+#Katalog, w którym serwis będzie pracował
+wd="/usr/share/usosztauth"
+
+fatal() {
+    echo $@ 1>&2; exit 1;
+}
+
+get_java17_or_newer_binary() {
+    main_java=$(readlink -f $(which java) 2>/dev/null)
+    [ -z "$main_java" ] && return;
+    java_location=$(echo "$main_java" | grep -oP '/[a-z]*/[a-z]*/')
+    [ -z "$java_location" ] && return;
+    find "$java_location" -name "java" |
+        grep -P 'java\-(1[7-9]|[2-9][0-9])' |
+        tail -1
+}
+
+#Binarka z javą 17 (w razie potrzeby ręcznie zdefiniwać ścieżkę do niej)
+java_bin=$(get_java17_or_newer_binary)
+[ -z $java_bin ] && fatal "Nie znaleziono javy 17 lub nowszej. Serwis nie wystartuje"
+
+if [ "$1" = "generate-templates" ]; then
+    cd $wd
+    $java_bin -jar $service_jar generate-templates
+    exit 0
+fi
+
+cd $wd
+$java_bin -jar $service_jar start-service
+exit 0
